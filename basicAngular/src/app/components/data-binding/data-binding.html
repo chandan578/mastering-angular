@@ -1,1 +1,81 @@
-<p>data-binding works!</p>
+<table style="width: 100%;">
+    <th>One way data binding</th>
+    <tr>
+        <!-- Interpolation -->
+        <td>
+            {{productName}}
+        </td>
+        <td>
+            <span>{{productPrice}}</span>
+        </td>
+        <td>
+            <input type="text" name="" id="" value="{{productName}}">
+        </td>
+
+        <!-- Product Binding -->
+        <td>
+            <input type="text" [maxLength]="maxCharAllowed">
+        </td>
+        <td>
+            <input type="text" [value]="productName">
+        </td>
+        <td>
+            <input type="{{dynamicTypeRadio}}" [value]="productName">
+        </td>
+        <td>
+            <input type="{{dynamicTypeText}}" [value]="productName">
+        </td>
+        <td>
+            <input type="{{dynamicTypeCheckbox}}" [value]="productName">
+        </td>
+        <td>
+            <input type="{{dynamicTypeButton}}" [value]="productName">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button (click)="onClick()" >click me </button>
+        </td>
+
+        <td>
+            <select (change)="onSelectMenu()">
+                <option value="">Laptop</option>
+                <option value="">Mobile</option>
+                <option value="">Charge</option>
+                <option value="">Bottle</option>
+                <option value="">Phone Case</option>
+                <option value="">iPad</option>
+            </select>
+        </td>
+        <td>
+            <!-- Event Binding -->
+            <div (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" style="background-color: rebeccapurple; border-radius: 50%; width: 100px; height: 100px;">
+
+            </div>
+        </td>
+    </tr>
+</table>
+
+<table>
+    <th>Two Way Data binding</th>
+    <tr>
+        <td>
+            <input type="text" name="" id="" [(ngModel)]="productName">
+        </td>
+        <td>
+            <input type="checkbox" name="" id="" [(ngModel)]="isProductAvailable"> isProductAvailable : {{isProductAvailable}}
+        </td>
+
+        <td>
+            <select [(ngModel)]="productName">
+                <option>Laptop</option>
+                <option>Mobile</option>
+                <option>Charge</option>
+                <option>Bottle</option>
+                <option>Phone Case</option>
+                <option>iPad</option>
+            </select>
+        </td>
+        
+    </tr>
+</table>

@@ -22,7 +22,7 @@ export class Veriables {
     age: 20,
     city: 'New York'
   }
-  
+
   studentList = [
     { name: 'John Doe', age: 20, city: 'New York' },
     { name: 'Jane Smith', age: 22, city: 'Los Angeles' },
@@ -30,6 +30,28 @@ export class Veriables {
     { name: 'Emily Davis', age: 21, city: 'Houston' },
     { name: 'William Brown', age: 23, city: 'Phoenix' }
   ];
+
+  employee: any = "Chandu";  // Do not use any type, use specific types instead
+
+  constructor() {
+
+    console.log('Student Name:', this.studentName);
+    console.log('Student Age:', this.studentAge);
+    console.log('Student City:', this.studentCity);
+
+    this.studentName = 'Alice Johnson';
+    console.log('Updated Student Name:', this.studentName);
+
+    // this.studentName = 55; // Error: Type 'number' is not assignable to type 'string'.
+    this.studentName = 23 as unknown as string;
+    console.log('Updated Student Name with number:', this.studentName);
+
+    console.log(this.employee); 
+    this.employee = 123; // Assigning a number to employee
+    console.log(this.employee); 
+    
+
+  }
 
 
   
