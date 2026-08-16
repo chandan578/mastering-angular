@@ -1,1 +1,46 @@
-<p>directive-exp works!</p>
+<div class="row">
+    <div class="col-3 p-5 bg-success" [ngClass]="divClassName">
+        Div 1
+    </div>
+    <div class="col-3 p-5" [ngClass]="isCheckActive? 'bg-warning' : 'bg-primary'">
+        Div2
+    </div>
+    <div class="col-3">
+        <input class="form-control" type="text" placeholder="Enter character..." [(ngModel)]="text" >
+        <h6 class="pt-2" [ngClass]="text.length>5 ? 'text-danger': 'text-success'"> {{text.length > 5 ? 'Text is INvalid.': 'Text is Valid.'}} </h6>
+    </div>
+</div>
+<hr>
+
+<div class="row p-2">
+    <div class="col-3">
+        <button class="btn btn-success m-2" (click)="divColorChange('bg-success')" >Success</button>
+        <button class="btn btn-danger" (click)="divColorChange('bg-danger')" >Danger</button>
+    </div>
+
+    <div class="col-3">
+        <input type="checkbox" [(ngModel)]="isCheckActive">  - {{isCheckActive}}
+    </div>
+</div>
+
+<hr>
+
+<div class="row">
+    <div class="col-3" [ngStyle]="{'background-color': pickColor}">
+        Div 3
+    </div>
+    <div class="col-3 text-center" [ngStyle]="divStyle" >
+        Div 4
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-3">
+        <input type="color" class="form-control" [(ngModel)]="pickColor" >
+    </div>
+    <div class="col-3">
+        <button class="btn btn-success" (click)="setStyle('circle')" >Circle</button>
+        <button class="btn btn-danger" (click)="setStyle('square')" >Square</button>
+    </div>
+</div>

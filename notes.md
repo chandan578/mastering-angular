@@ -22,5 +22,17 @@
 ### Types of Routes:
     - **Default Route**: The route that is loaded when the application starts.
     - **Parameterized Route**: A route that accepts parameters, allowing you to pass data to the routed component.
-    -**Wildcard Route**: A route that matches any URL that doesn't match any of the defined routes, often used for displaying a "Page Not Found" component.
+    - **Wildcard Route**: A route that matches any URL that doesn't match any of the defined routes, often used for displaying a "Page Not Found" component.
 
+# 3. Control Flow Statements
+    Control flow statements in Angular templates allow you to conditionally render elements or iterate over collections using directives. 
+
+    - **@if**: Used to conditionally render elements based on a boolean expression.
+    - **@for**: Used to iterate over a collection and render elements for each item
+
+# 4. Directives (Standalone Components)
+    Directives are classes that add behavior to elements in your Angular templates. There are three types of directives:
+
+    - **Component Directives**: These are the most common type of directive, which define a component with its own template and behavior.
+    - **Structural Directives**: These directives change the structure of the DOM by adding or removing elements. Examples include `*ngIf` and `*ngFor`. It is removed in new versions of Angular and replaced with `@if` and `@for` control flow statements.
+    - **Attribute Directives**: These directives change the appearance or behavior of an element. Examples include `ngClass` and `ngStyle`.
