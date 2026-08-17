@@ -4,6 +4,7 @@ import { DataBinding } from './components/data-binding/data-binding';
 import { DirectiveExp } from './components/directive-exp/directive-exp';
 import { NotFound } from './components/not-found/not-found';
 import { ControlFlow } from './components/control-flow/control-flow';
+import { TemplateForm } from './components/template-form/template-form';
 
 export const routes: Routes = [
     {
@@ -26,6 +27,10 @@ export const routes: Routes = [
     {
         path: 'controlflow',
         component: ControlFlow
+    },
+    {
+        path: 'template-form',
+        component: TemplateForm
     },
     {
         path: '**',

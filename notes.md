@@ -36,3 +36,11 @@
     - **Component Directives**: These are the most common type of directive, which define a component with its own template and behavior.
     - **Structural Directives**: These directives change the structure of the DOM by adding or removing elements. Examples include `*ngIf` and `*ngFor`. It is removed in new versions of Angular and replaced with `@if` and `@for` control flow statements.
     - **Attribute Directives**: These directives change the appearance or behavior of an element. Examples include `ngClass` and `ngStyle`.
+
+# 5. Template Forms 
+    Template-driven forms are a way to create forms in Angular using directives in the template. They are suitable for simple forms and rely on two-way data binding.
+
+    - **Form Controls**: These are the individual input elements in a form, such as text inputs, checkboxes, and radio buttons.
+    - **Form Groups**: These are collections of form controls that can be managed together.
+    - **Validation**: Angular provides built-in validators for common validation tasks, such as required fields and email format.
+
