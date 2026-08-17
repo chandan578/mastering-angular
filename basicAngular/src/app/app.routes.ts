@@ -5,6 +5,7 @@ import { DirectiveExp } from './components/directive-exp/directive-exp';
 import { NotFound } from './components/not-found/not-found';
 import { ControlFlow } from './components/control-flow/control-flow';
 import { TemplateForm } from './components/template-form/template-form';
+import { ReactiveForm } from './components/reactive-form/reactive-form';
 
 export const routes: Routes = [
     {
@@ -31,6 +32,10 @@ export const routes: Routes = [
     {
         path: 'template-form',
         component: TemplateForm
+    },
+    {
+        path: 'reactive-form',
+        component: ReactiveForm
     },
     {
         path: '**',

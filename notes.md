@@ -44,3 +44,14 @@
     - **Form Groups**: These are collections of form controls that can be managed together.
     - **Validation**: Angular provides built-in validators for common validation tasks, such as required fields and email format.
 
+# 6. Reactive Forms
+    Reactive forms are a more powerful and flexible way to create forms in Angular using the `FormBuilder` service and reactive programming techniques. They are suitable for complex forms and provide more control over form validation and state management.
+
+    - **Form Controls**: Similar to template-driven forms, these are the individual input elements in a form.
+    - **Form Groups**: Collections of form controls that can be managed together, allowing for nested structures.
+    - **Form Arrays**: Collections of form controls or form groups that can be dynamically added or removed.
+    - **Validation**: Reactive forms allow for custom validators and asynchronous validation, providing more flexibility in handling complex validation scenarios.
+
+## Note: Difference between Template-driven and Reactive Forms
+    - Template-driven forms are simpler to set up and use, making them suitable for basic forms. They rely on directives in the template and two-way data binding.
+    - Reactive forms provide more control and flexibility, making them suitable for complex forms. They use the `FormBuilder` service and reactive programming techniques, allowing for custom validation and dynamic form structures.
