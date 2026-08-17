@@ -55,3 +55,7 @@
 ## Note: Difference between Template-driven and Reactive Forms
     - Template-driven forms are simpler to set up and use, making them suitable for basic forms. They rely on directives in the template and two-way data binding.
     - Reactive forms provide more control and flexibility, making them suitable for complex forms. They use the `FormBuilder` service and reactive programming techniques, allowing for custom validation and dynamic form structures.
+
+# 7. Signal
+    What is Signal?
+    

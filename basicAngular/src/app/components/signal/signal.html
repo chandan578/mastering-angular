@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-3">
+        {{empName}}
+    </div>
+    <div class="col-3">
+        signal value => {{empMobileNo()}}
+    </div>
+    <div class="col-3">
+        signal value => {{isActive()}}
+    </div>
+    <div class="col-3">
+        signal value => {{cityListSignal()}}
+        @for(item of cityListSignal(); track $index){
+            <li>{{item}}</li>
+        }
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-3">
+        <button class="bg-success btn" (click)="changeEmpName()" >Change Name</button>
+    </div>
+
+    <div class="col-3">
+        <button class="btn bg-success" (click)="changeEmpMobileNo()" >Change Mobile No</button>
+    </div>
+</div>
