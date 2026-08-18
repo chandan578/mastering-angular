@@ -57,5 +57,19 @@
     - Reactive forms provide more control and flexibility, making them suitable for complex forms. They use the `FormBuilder` service and reactive programming techniques, allowing for custom validation and dynamic form structures.
 
 # 7. Signal
-    What is Signal?
+    Signals are a new feature in Angular that allow you to manage state and reactivity in your applications. They provide a way to create reactive data sources that can be observed and updated, enabling more efficient and maintainable state management.
+
+    - **Creating Signals**: You can create signals using the `signal` function, which takes an initial value and returns a signal object.
+    - **Using Signals**: You can use signals in your components to manage state and react to changes. When a signal's value changes, any components or templates that depend on that signal will automatically update.
+    - **Combining Signals**: You can combine multiple signals using the `combine` function, allowing you to create derived signals based on the values of other signals.
+
+## Signal Forms:
+    Signal forms are a way to create forms in Angular using signals for state management. They provide a reactive approach to form handling, allowing you to manage form state and validation more efficiently.
+
+    - **Creating Signal Forms**: You can create signal forms using the `form` function, which takes an initial model and a schema for validation.
+    - **Using Signal Forms**: You can use signal forms in your components to manage form state and handle user input. When the form's state changes, any components or templates that depend on that form will automatically update.
+    - **Validation**: Signal forms support validation through the schema provided when creating the form, allowing you to enforce rules and constraints on user input.
+
+## Note: 
+    Signal forms are a new feature in Angular and provide a more reactive and efficient way to handle forms compared to traditional template-driven or reactive forms. They leverage the power of signals for state management, making it easier to create dynamic and responsive forms in your applications.
     
