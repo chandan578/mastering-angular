@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-6">
+        <div class="card m-3">
+            <div class="card-header">
+                <h5>User List</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead class="">
+                        <tr>
+
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>UserName</th>
+                            <th>Email</th>
+                            <th>Company Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for(item of userList(); track $index){
+                        <tr class="border">
+                            <td>{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.username}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.company.name}}</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card m-3">
+            <div class="card-header">
+                <h5>Bus Vendor List</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead class="">
+                        <tr>
+
+                            <th>#</th>
+                            <th>Vendor Name</th>
+                            <th>Email</th>
+                            <th>Phone No</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for(item of vendorList(); track $index){
+                        <tr class="border">
+                            <td>{{item.vendorId}}</td>
+                            <td>{{item.vendorName}}</td>
+                            <td>{{item.emailId}}</td>
+                            <td>{{item.contactNo}}</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
