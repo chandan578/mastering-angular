@@ -123,3 +123,13 @@ Angular's HTTP client module simplifies the process of making HTTP requests to e
 
 ### GET API Requests
 GET requests are used to retrieve data from an API endpoint. In Angular, you can use the HTTP client to send GET requests and handle the response asynchronously, allowing your application to display data dynamically.
+
+### POST API Requests
+POST requests are used to send data to an API endpoint, typically for creating new resources. Angular's HTTP client allows you to send POST requests with payloads, enabling your application to interact with backend services and submit data effectively.
+
+### PUT API Requests
+PUT requests are used to update existing resources on an API endpoint. In Angular, you can use the HTTP client to send PUT requests with updated data, allowing your application to modify existing records in a backend service.
+
+### DELETE API Requests
+DELETE requests are used to remove resources from an API endpoint. Angular's HTTP client enables you to send DELETE requests, allowing your application to delete records or data entries from a backend service efficiently.
+
