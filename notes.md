@@ -133,3 +133,5 @@ PUT requests are used to update existing resources on an API endpoint. In Angula
 ### DELETE API Requests
 DELETE requests are used to remove resources from an API endpoint. Angular's HTTP client enables you to send DELETE requests, allowing your application to delete records or data entries from a backend service efficiently.
 
+## 9. Services
+Services in Angular are singleton classes that encapsulate business logic and data management, promoting code reusability and separation of concerns. They provide a centralized way to manage shared functionality across components.

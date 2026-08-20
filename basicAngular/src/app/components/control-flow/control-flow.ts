@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, Injectable } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Master } from '../../services/master';
 
 @Component({
   selector: 'app-control-flow',
@@ -12,8 +13,16 @@ export class ControlFlow {
   isToggleDiv: boolean = true;
   isOffer: boolean = true;
   orderStatus: string = 'failed';
+  masterService = inject(Master);
 
   cityList = ['Delhi', "Banglore", "Pune", "Patna", "Mumbai"]
+  originalCardNo: string = "1234189401238590";
+  formattedCardNo: string = '';
+
+  constructor(){
+    this.formattedCardNo = this.masterService.getFormattedCardNo(this.originalCardNo);
+    debugger;
+  }
 
   isToggleDiv1() {
     this.isToggleDiv = !this.isToggleDiv;
@@ -33,5 +42,10 @@ export class ControlFlow {
   ];
 
   selectedStudent = "Select a student";
+
+  storeLoggedUser(){
+    debugger;
+    this.masterService.loggedUser = "chandan";
+  }
 
 }

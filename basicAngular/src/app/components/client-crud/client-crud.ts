@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Master } from '../../services/master';
 
 @Component({
   selector: 'app-client-crud',
@@ -22,13 +23,28 @@ export class ClientCrud {
     createdDate: new Date(),
     logo: '',
   };
+  formattedCardNo: string = "";
+  originalCardNo: string = "1234189401238590";
 
-  constructor() {
+
+  constructor(private masterSrv: Master) {
+    
     this.getAllClients();
+    debugger;
+    const masterService = masterSrv.loggedUser;
+    this.formattedCardNo = masterSrv.getFormattedCardNo(this.originalCardNo);
   }
 
+  // getAllClients() {
+  //   this.http.get('https://api.freeprojectapi.com/api/SmartParking/GetAllClients').subscribe({
+  //     next: (res: any) => {
+  //       // debugger;
+  //       this.clientList.set(res.data);
+  //     },
+  //   });
+  // }
   getAllClients() {
-    this.http.get('https://api.freeprojectapi.com/api/SmartParking/GetAllClients').subscribe({
+    this.masterSrv.getClients().subscribe({
       next: (res: any) => {
         // debugger;
         this.clientList.set(res.data);
@@ -36,9 +52,23 @@ export class ClientCrud {
     });
   }
 
+  // onSaveClient(){
+  //   debugger;
+  //   this.http.post("https://api.freeprojectapi.com/api/SmartParking/addclient", this.newClientObj).subscribe({
+  //     next:(res: any) =>{
+  //       debugger;
+  //       if(res.result){
+  //         alert("Client save successfully.");
+  //         this.getAllClients();
+  //       }else{
+  //         alert(res.message);
+  //       }
+  //     }
+  //   })
+  // }
   onSaveClient(){
     debugger;
-    this.http.post("https://api.freeprojectapi.com/api/SmartParking/addclient", this.newClientObj).subscribe({
+    this.masterSrv.saveClient(this.newClientObj).subscribe({
       next:(res: any) =>{
         debugger;
         if(res.result){
