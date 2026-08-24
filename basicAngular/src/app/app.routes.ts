@@ -10,6 +10,7 @@ import { Signal } from './components/signal/signal';
 import { SignalForm } from './components/signal-form/signal-form';
 import { GetAPI } from './components/get-api/get-api';
 import { ClientCrud } from './components/client-crud/client-crud';
+import { Pipes } from './components/pipes/pipes';
 
 export const routes: Routes = [
     {
@@ -56,6 +57,10 @@ export const routes: Routes = [
     {
         path: 'clientCrud',
         component: ClientCrud
+    },
+    {
+        path: 'pipes',
+        component: Pipes
     },
     {
         path: '**',

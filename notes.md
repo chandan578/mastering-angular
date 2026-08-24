@@ -135,3 +135,8 @@ DELETE requests are used to remove resources from an API endpoint. Angular's HTT
 
 ## 9. Services
 Services in Angular are singleton classes that encapsulate business logic and data management, promoting code reusability and separation of concerns. They provide a centralized way to manage shared functionality across components.
+The use of services enhances maintainability and testability in Angular applications, allowing developers to create modular and organized codebases.
+
+## 10. Pipes
+Pipes in Angular are a powerful feature that allows developers to transform data directly within templates. They provide a clean and declarative way to format, filter, or manipulate data before it is displayed to the user.
+They enhance the readability of templates and promote code reusability by encapsulating common data transformation logic. It is important to note that while pipes are useful for presentation purposes, they should not be used for complex data manipulation or business logic, which should be handled within components or services.
