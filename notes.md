@@ -140,3 +140,20 @@ The use of services enhances maintainability and testability in Angular applicat
 ## 10. Pipes
 Pipes in Angular are a powerful feature that allows developers to transform data directly within templates. They provide a clean and declarative way to format, filter, or manipulate data before it is displayed to the user.
 They enhance the readability of templates and promote code reusability by encapsulating common data transformation logic. It is important to note that while pipes are useful for presentation purposes, they should not be used for complex data manipulation or business logic, which should be handled within components or services.
+
+## 11. Life Cycle Hooks
+Lifecycle Hooks in Angular are special methods that allow developers to tap into key moments in a component's lifecycle. These hooks provide a way to execute custom logic at specific points during the creation, update, and destruction of components. The main lifecycle hooks include:
+
+1. ngOnInit: Called once after the component's data-bound properties have been initialized. It's commonly used for initialization logic, such as fetching data or setting up subscriptions.
+
+2. ngDoCheck: Invoked during every change detection cycle, allowing developers to implement custom change detection logic. It can be used to detect and respond to changes that Angular's default change detection might miss.
+
+3. ngAfterContentInit: Called after Angular projects external content into the component's view. This hook is useful for performing actions that depend on the projected content.
+
+4. ngAfterContentChecked: Invoked after every check of the component's projected content. It allows developers to respond to changes in the projected content.
+
+5. ngAfterViewInit: Called after Angular initializes the component's views and child views. It's often used for DOM manipulation or initializing third-party libraries that depend on the view being fully rendered.
+
+6. ngOnDestroy: Invoked just before Angular destroys the component. This hook is essential for cleanup tasks, such as unsubscribing from observables or releasing resources to prevent memory leaks.
+
+By implementing these lifecycle hooks, developers can gain fine-grained control over the behavior of their components, ensuring that they respond appropriately to changes in data, user interactions, and the overall application state.

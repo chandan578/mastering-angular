@@ -11,6 +11,7 @@ import { SignalForm } from './components/signal-form/signal-form';
 import { GetAPI } from './components/get-api/get-api';
 import { ClientCrud } from './components/client-crud/client-crud';
 import { Pipes } from './components/pipes/pipes';
+import { LifeCycles } from './components/life-cycles/life-cycles';
 
 export const routes: Routes = [
     {
@@ -61,6 +62,10 @@ export const routes: Routes = [
     {
         path: 'pipes',
         component: Pipes
+    },
+    {
+        path: 'lifecycles',
+        component: LifeCycles
     },
     {
         path: '**',
