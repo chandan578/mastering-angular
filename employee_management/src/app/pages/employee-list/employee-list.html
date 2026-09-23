@@ -1,0 +1,90 @@
+<main class="container-fluid px-4 py-4" style="background: #f7f8f5; min-height: 100vh;">
+	<div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4">
+		<div>
+			<p class="text-uppercase fw-bold mb-2" style="color: var(--accent-dark); font-size: 0.68rem; letter-spacing: 0.14em;">People directory</p>
+			<h1 class="mb-2" style="color: var(--ink); font-family: Georgia, 'Times New Roman', serif; font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 400;">Employees</h1>
+			<p class="mb-0" style="color: var(--muted); font-size: 0.85rem;">Keep your team information organized and easy to find.</p>
+		</div>
+		<button class="ui-btn ui-btn-primary ui-btn-lg" type="button">
+			<span aria-hidden="true" style="font-size: 1.2rem; line-height: 0;">+</span>
+			Add new employee
+		</button>
+	</div>
+
+	<section class="ui-table-wrap">
+		<div class="ui-toolbar p-3 mb-0 border-bottom" style="border-color: var(--line) !important;">
+			<div>
+				<strong style="color: var(--ink); font-size: 0.9rem;">All employees</strong>
+				<span class="ms-2 ui-badge ui-badge-neutral">48 total</span>
+			</div>
+			<div class="ui-toolbar-actions">
+				<label class="visually-hidden" for="employee-search">Search employees</label>
+				<input class="ui-control ui-search" id="employee-search" type="search" placeholder="Search employees..." />
+				<button class="ui-btn ui-btn-secondary ui-btn-sm" type="button">Filter</button>
+			</div>
+		</div>
+
+		<table class="ui-table">
+			<thead>
+				<tr>
+					<th scope="col">Employee</th>
+					<th scope="col">Department</th>
+					<th scope="col">Role</th>
+					<th scope="col">Status</th>
+					<th scope="col">Joined</th>
+					<th scope="col" class="text-end">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><span class="ui-person"><span class="ui-avatar">AM</span><span>Alex Morgan<small class="d-block ui-table-muted fw-normal mt-1">alex.morgan@acme.com</small></span></span></td>
+					<td class="ui-table-muted">Product</td>
+					<td>Product Manager</td>
+					<td><span class="ui-badge ui-badge-success">Active</span></td>
+					<td class="ui-table-muted">Jan 12, 2023</td>
+					<td><div class="ui-table-actions"><button class="ui-icon-btn" type="button" title="Edit Alex Morgan" aria-label="Edit Alex Morgan">✎</button><button class="ui-icon-btn ui-icon-btn-danger" type="button" title="Delete Alex Morgan" aria-label="Delete Alex Morgan">⌫</button></div></td>
+				</tr>
+				<tr>
+					<td><span class="ui-person"><span class="ui-avatar" style="background: #f8e4d8; color: #9b5c37;">JR</span><span>Jamie Rivera<small class="d-block ui-table-muted fw-normal mt-1">jamie.rivera@acme.com</small></span></span></td>
+					<td class="ui-table-muted">Engineering</td>
+					<td>Frontend Engineer</td>
+					<td><span class="ui-badge ui-badge-success">Active</span></td>
+					<td class="ui-table-muted">Mar 08, 2023</td>
+					<td><div class="ui-table-actions"><button class="ui-icon-btn" type="button" title="Edit Jamie Rivera" aria-label="Edit Jamie Rivera">✎</button><button class="ui-icon-btn ui-icon-btn-danger" type="button" title="Delete Jamie Rivera" aria-label="Delete Jamie Rivera">⌫</button></div></td>
+				</tr>
+				<tr>
+					<td><span class="ui-person"><span class="ui-avatar" style="background: #e9e5f4; color: #665784;">SK</span><span>Sarah Kim<small class="d-block ui-table-muted fw-normal mt-1">sarah.kim@acme.com</small></span></span></td>
+					<td class="ui-table-muted">Design</td>
+					<td>Senior UX Designer</td>
+					<td><span class="ui-badge ui-badge-warning">On leave</span></td>
+					<td class="ui-table-muted">Aug 21, 2023</td>
+					<td><div class="ui-table-actions"><button class="ui-icon-btn" type="button" title="Edit Sarah Kim" aria-label="Edit Sarah Kim">✎</button><button class="ui-icon-btn ui-icon-btn-danger" type="button" title="Delete Sarah Kim" aria-label="Delete Sarah Kim">⌫</button></div></td>
+				</tr>
+				<tr>
+					<td><span class="ui-person"><span class="ui-avatar" style="background: #e6f0f4; color: #3f7686;">DT</span><span>David Thomas<small class="d-block ui-table-muted fw-normal mt-1">david.thomas@acme.com</small></span></span></td>
+					<td class="ui-table-muted">Marketing</td>
+					<td>Content Strategist</td>
+					<td><span class="ui-badge ui-badge-success">Active</span></td>
+					<td class="ui-table-muted">Nov 03, 2024</td>
+					<td><div class="ui-table-actions"><button class="ui-icon-btn" type="button" title="Edit David Thomas" aria-label="Edit David Thomas">✎</button><button class="ui-icon-btn ui-icon-btn-danger" type="button" title="Delete David Thomas" aria-label="Delete David Thomas">⌫</button></div></td>
+				</tr>
+				<tr>
+					<td><span class="ui-person"><span class="ui-avatar">MC</span><span>Maria Chen<small class="d-block ui-table-muted fw-normal mt-1">maria.chen@acme.com</small></span></span></td>
+					<td class="ui-table-muted">Operations</td>
+					<td>Operations Lead</td>
+					<td><span class="ui-badge ui-badge-neutral">Inactive</span></td>
+					<td class="ui-table-muted">Jun 14, 2022</td>
+					<td><div class="ui-table-actions"><button class="ui-icon-btn" type="button" title="Edit Maria Chen" aria-label="Edit Maria Chen">✎</button><button class="ui-icon-btn ui-icon-btn-danger" type="button" title="Delete Maria Chen" aria-label="Delete Maria Chen">⌫</button></div></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 border-top p-3" style="border-color: #edf1ee !important; color: var(--muted); font-size: 0.72rem;">
+			<span>Showing 1 to 5 of 48 employees</span>
+			<div class="d-flex gap-2">
+				<button class="ui-btn ui-btn-secondary ui-btn-sm" type="button" disabled>Previous</button>
+				<button class="ui-btn ui-btn-secondary ui-btn-sm" type="button">Next</button>
+			</div>
+		</div>
+	</section>
+</main>

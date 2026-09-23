@@ -1,0 +1,149 @@
+<input class="sidebar-toggle" id="sidebar-toggle" type="checkbox" aria-label="Toggle sidebar" />
+
+<div class="layout-shell">
+	<aside class="sidebar" aria-label="Main navigation">
+		<div class="sidebar-header">
+			<a class="brand" href="#" aria-label="Employee Management home">
+				<span class="brand-mark">em</span>
+				<span class="brand-name">People<span>flow</span></span>
+			</a>
+			<label class="sidebar-close" for="sidebar-toggle" aria-label="Close sidebar">×</label>
+		</div>
+
+		<div class="workspace-switcher">
+			<span class="workspace-icon">{{loggedUserData?.employeeName[0]}}</span>
+			<span>
+				<strong>{{loggedUserData?.employeeName}} workspace</strong>
+				<small>{{loggedUserData?.role}}</small>
+			</span>
+			<span class="chevron">⌄</span>
+		</div>
+
+		<nav class="navigation">
+			<p class="nav-label">Workspace</p>
+			<a class="nav-item active" routerLink="/admin/dashboard" title="Dashboard">
+				<span class="nav-icon">⌂</span>
+				<span class="nav-text">Dashboard</span>
+			</a>
+			<a class="nav-item" routerLink="/admin/employee-list" title="Employees">
+				<span class="nav-icon">♙</span>
+				<span class="nav-text">Employees</span>
+				<span class="nav-count">48</span>
+			</a>
+			<a class="nav-item" routerLink="" title="Projects">
+				<span class="nav-icon">▣</span>
+				<span class="nav-text">Projects</span>
+			</a>
+			<a class="nav-item" routerLink="" title="Time off">
+				<span class="nav-icon">◷</span>
+				<span class="nav-text">Time off</span>
+			</a>
+
+			<p class="nav-label secondary-label">Manage</p>
+			<a class="nav-item" routerLink="" title="Reports">
+				<span class="nav-icon">♧</span>
+				<span class="nav-text">Reports</span>
+			</a>
+			<a class="nav-item" routerLink="" title="Settings">
+				<span class="nav-icon">⚙</span>
+				<span class="nav-text">Settings</span>
+			</a>
+		</nav>
+
+		<div class="sidebar-footer">
+			<div class="help-card">
+				<span class="help-icon">?</span>
+				<div>
+					<strong>Need a hand?</strong>
+					<small>Visit the help center</small>
+				</div>
+			</div>
+			<p>Peopleflow v1.0</p>
+		</div>
+	</aside>
+
+	<div class="page-area">
+		<header class="topbar">
+			<div class="topbar-left">
+				<label class="sidebar-open" for="sidebar-toggle" aria-label="Toggle sidebar" title="Toggle sidebar">☰</label>
+				<div class="breadcrumb">
+					<span>Workspace</span>
+					<strong>/</strong>
+					<strong>Dashboard</strong>
+				</div>
+			</div>
+
+			<div class="topbar-actions">
+				<button class="icon-button notification-button" type="button" aria-label="Notifications">
+					<span>♢</span>
+					<i></i>
+				</button>
+				<span class="topbar-divider"></span>
+				<details class="profile-menu">
+					<summary class="profile-trigger" aria-label="Open profile options">
+						<span class="avatar">AM</span>
+						<span class="profile-copy">
+							<strong>{{loggedUserData?.employeeName}}</strong>
+							<small>{{loggedUserData?.role}}</small>
+						</span>
+					</summary>
+					<div class="profile-dropdown">
+						<div class="dropdown-heading">Account</div>
+						<a href="#"><span>♙</span> My profile</a>
+						<a (click)="onLoggOf()" ><span>↪</span> Logout</a>
+					</div>
+				</details>
+			</div>
+		</header>
+
+		<main class="content-area">
+            <router-outlet></router-outlet>
+			<!-- <div class="content-heading">
+				<div>
+					<p class="eyebrow">Wednesday, September 23, 2026</p>
+					<h1>Good morning, Alex.</h1>
+					<p class="heading-copy">Here is what is happening across your workspace today.</p>
+				</div>
+				<button class="primary-button" type="button"><span>+</span> Add employee</button>
+			</div>
+
+			<section class="stats-grid" aria-label="Workspace overview">
+				<article class="stat-card">
+					<div class="stat-topline"><span>Total employees</span><span class="stat-icon green">♙</span></div>
+					<strong>48</strong>
+					<p><span class="positive">↗ 8.2%</span> from last month</p>
+				</article>
+				<article class="stat-card">
+					<div class="stat-topline"><span>Active projects</span><span class="stat-icon blue">▣</span></div>
+					<strong>12</strong>
+					<p><span class="positive">↗ 2 new</span> this month</p>
+				</article>
+				<article class="stat-card">
+					<div class="stat-topline"><span>On leave today</span><span class="stat-icon amber">◷</span></div>
+					<strong>03</strong>
+					<p><span class="neutral">→ Same as yesterday</span></p>
+				</article>
+			</section>
+
+			<section class="dashboard-grid">
+				<article class="panel activity-panel">
+					<div class="panel-heading">
+						<div><p class="eyebrow">Keep an eye on things</p><h2>Recent activity</h2></div>
+						<a href="#">View all</a>
+					</div>
+					<div class="activity-list">
+						<div class="activity-item"><span class="activity-avatar mint">JR</span><p><strong>Jamie Rivera</strong> joined the <b>Product launch</b> project.<small>12 minutes ago</small></p></div>
+						<div class="activity-item"><span class="activity-avatar peach">SK</span><p><strong>Sarah Kim</strong> updated their profile information.<small>48 minutes ago</small></p></div>
+						<div class="activity-item"><span class="activity-avatar lavender">DT</span><p><strong>David Thomas</strong> requested time off for October 4.<small>2 hours ago</small></p></div>
+					</div>
+				</article>
+
+				<article class="panel birthdays-panel">
+					<div class="panel-heading"><div><p class="eyebrow">Celebrate your people</p><h2>Upcoming birthdays</h2></div><span class="calendar-icon">▦</span></div>
+					<div class="birthday-item"><span class="activity-avatar peach">MC</span><p><strong>Maria Chen</strong><small>Tomorrow · September 24</small></p><span class="birthday-mark">✦</span></div>
+					<div class="birthday-item"><span class="activity-avatar mint">OB</span><p><strong>Owen Brooks</strong><small>September 28</small></p><span class="birthday-mark">✦</span></div>
+				</article>
+			</section> -->
+		</main>
+	</div>
+</div>
