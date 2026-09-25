@@ -1,1 +1,111 @@
-<p>employee-form works!</p>
+<main class="employee-form-page">
+	<section class="employee-form-header">
+		<div>
+			<a class="back-link" href="#"><span aria-hidden="true">←</span> Back to employees</a>
+			<p class="form-eyebrow">People directory</p>
+			<h1>Add new employee</h1>
+			<p class="form-intro">Create a profile for a new member of your organization.</p>
+		</div>
+		<div class="generated-note"><span aria-hidden="true">✦</span> Employee ID and created date are generated automatically</div>
+	</section>
+
+	<form class="employee-form" action="#" method="post">
+		<section class="form-card">
+			<div class="card-heading">
+				<div class="section-icon">01</div>
+				<div>
+					<h2>Personal information</h2>
+					<p>Basic details to identify and contact this employee.</p>
+				</div>
+			</div>
+
+			<div class="form-grid">
+				<div class="form-field form-field-wide">
+					<label for="employeeName">Employee name <span>*</span></label>
+					<input class="ui-control" id="employeeName" [(ngModel)]="employeeObj.employeeName" name="employeeName" type="text" placeholder="e.g. Alex Morgan" autocomplete="name" required />
+				</div>
+
+				<div class="form-field">
+					<label for="contactNo">Contact number <span>*</span></label>
+					<input class="ui-control" id="contactNo" name="contactNo" [(ngModel)]="employeeObj.contactNo" type="tel" placeholder="e.g. +1 555 010 2040" autocomplete="tel" required />
+				</div>
+
+				<div class="form-field">
+					<label for="emailId">Email address <span>*</span></label>
+					<input class="ui-control" id="emailId" name="emailId" type="email" placeholder="name@company.com" [(ngModel)]="employeeObj.emailId" autocomplete="email" required />
+				</div>
+
+				<fieldset class="form-field form-field-wide gender-field">
+					<legend>Gender <span>*</span></legend>
+					<div class="choice-group">
+						<label class="choice-option" for="gender-female"><input id="gender-female" name="gender" type="radio" [(ngModel)]="employeeObj.gender" value="Female" required /><span>Female</span></label>
+						<label class="choice-option" for="gender-male"><input id="gender-male" name="gender" type="radio" [(ngModel)]="employeeObj.gender" value="Male" /><span>Male</span></label>
+						<label class="choice-option" for="gender-non-binary"><input id="gender-non-binary" [(ngModel)]="employeeObj.gender" name="gender" type="radio" value="Non-binary" /><span>Non-binary</span></label>
+						<label class="choice-option" for="gender-prefer-not"><input id="gender-prefer-not" [(ngModel)]="employeeObj.gender" name="gender" type="radio" value="Prefer not to say" /><span>Prefer not to say</span></label>
+					</div>
+				</fieldset>
+			</div>
+		</section>
+
+		<section class="form-card">
+			<div class="card-heading">
+				<div class="section-icon">02</div>
+				<div>
+					<h2>Work information</h2>
+					<p>Assign this employee to a department and role.</p>
+				</div>
+			</div>
+
+			<div class="form-grid">
+				<div class="form-field">
+					<label for="departmentParent">Department parent <span>*</span></label>
+					<select class="ui-control" id="departmentParent" (change)="onChangeDept($event)" name="deptParentId" required>
+						<option value="" selected disabled>Select parent department</option>
+						@for(item of partentDeptList(); track $index){
+                            <option [value]="item.departmentId">{{item.departmentName}}</option>
+                        }
+					</select>
+				</div>
+
+				<div class="form-field">
+					<label for="departmentChild">Department child <span>*</span></label>
+					<select class="ui-control" id="departmentChild" [(ngModel)]="employeeObj.deptId" name="deptId" required>
+						<option value="" selected disabled>Select child department</option>
+						@for(item of childDeptList(); track $index){
+                            <option [value]="item.childDeptId">{{item.departmentName}}</option>
+                        }
+					</select>
+					<small class="field-hint">Choose a parent department first.</small>
+				</div>
+
+				<div class="form-field">
+					<label for="role">Role <span>*</span></label>
+					<select class="ui-control" id="role" name="role" [(ngModel)]="employeeObj.role" required>
+						<option value="" selected disabled>Select employee role</option>
+						<option value="administrator">Administrator</option>
+						<option value="manager">Manager</option>
+						<option value="developer">Developer</option>
+						<option value="team-member">Team member</option>
+						<option value="contractor">Contractor</option>
+						<option value="other">Other</option>
+					</select>
+				</div>
+
+				<div class="form-field">
+					<label for="password">Temporary password <span>*</span></label>
+					<input class="ui-control" id="password" name="password" type="password" placeholder="Create a temporary password" [(ngModel)]="employeeObj.password" autocomplete="new-password" minlength="8" required />
+					<small class="field-hint">Use at least 8 characters.</small>
+				</div>
+			</div>
+		</section>
+
+		<div class="form-actions">
+			<a class="ui-btn ui-btn-secondary" href="#">Cancel</a>
+			@if(currentEmpId == 0){
+				<button class="ui-btn ui-btn-primary ui-btn-lg" type="button" (click)="onSaveEmp()" ><span aria-hidden="true">✓</span> Create employee</button>
+			} @else{
+				<button class="ui-btn ui-btn-secondary ui-btn-lg" type="button" (click)="onSaveEmp()" ><span aria-hidden="true">✓</span> Update employee</button>
+			}
+		</div>
+	</form>
+</main>
