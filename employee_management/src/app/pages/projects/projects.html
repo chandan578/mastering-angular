@@ -31,39 +31,43 @@
 			<div class="project-form-grid">
 				<div class="project-field project-field-wide">
 					<label for="projectName">Project name <span>*</span></label>
-					<input class="ui-control" id="projectName" name="projectName" formControlName="projectName" type="text" placeholder="e.g. Website redesign" required />
+					<input class="ui-control" id="projectName" name="projectName" formControlName="projectName"
+						type="text" placeholder="e.g. Website redesign" required />
 				</div>
 				<div class="project-field">
 					<label for="clientName">Client name <span>*</span></label>
-					<input class="ui-control" id="clientName" name="clientName" formControlName="clientName" type="text" placeholder="e.g. Northstar Labs" required />
+					<input class="ui-control" id="clientName" name="clientName" formControlName="clientName" type="text"
+						placeholder="e.g. Northstar Labs" required />
 				</div>
 				<div class="project-field">
 					<label for="startDate">Start date <span>*</span></label>
-					<input class="ui-control" id="startDate" name="startDate" formControlName="startDate" type="date" value="2026-09-25" required />
+					<input class="ui-control" id="startDate" name="startDate" formControlName="startDate" type="date"
+						value="2026-09-25" required />
 				</div>
 				<div class="project-field">
 					<label for="leadByEmpId">Project lead <span>*</span></label>
-					<select class="ui-control" id="leadByEmpId" formControlName="leadByEmpId" name="leadByEmpId" required>
+					<select class="ui-control" id="leadByEmpId" formControlName="leadByEmpId" name="leadByEmpId"
+						required>
 						<option value="" selected disabled>Select project lead</option>
-                        @for(item of empList | async; track $index){
-                            <option [value]="item.employeeId">{{item.employeeName}}</option>
-                        }
-						<option value="2">Jamie Rivera</option>
-						<option value="3">Sarah Kim</option>
-						<option value="4">David Thomas</option>
+						@for(item of empList | async; track $index){
+						<option [value]="item.employeeId">{{item.employeeName}}</option>
+						}
 					</select>
 				</div>
 				<div class="project-field">
 					<label for="contactPerson">Contact person <span>*</span></label>
-					<input class="ui-control" id="contactPerson" formControlName="contactPerson" name="contactPerson" type="text" placeholder="e.g. Taylor Reed" required />
+					<input class="ui-control" id="contactPerson" formControlName="contactPerson" name="contactPerson"
+						type="text" placeholder="e.g. Taylor Reed" required />
 				</div>
 				<div class="project-field">
 					<label for="contactNo">Contact number <span>*</span></label>
-					<input class="ui-control" id="contactNo" name="contactNo" formControlName="contactNo" type="tel" placeholder="e.g. +1 555 010 2040" required />
+					<input class="ui-control" id="contactNo" name="contactNo" formControlName="contactNo" type="tel"
+						placeholder="e.g. +1 555 010 2040" required />
 				</div>
 				<div class="project-field">
 					<label for="emailId">Contact email <span>*</span></label>
-					<input class="ui-control" id="emailId" name="emailId" type="email" formControlName="emailId" placeholder="contact@client.com" required />
+					<input class="ui-control" id="emailId" name="emailId" type="email" formControlName="emailId"
+						placeholder="contact@client.com" required />
 				</div>
 			</div>
 
@@ -71,7 +75,8 @@
 				<p><span aria-hidden="true">✦</span> Project ID will be generated automatically.</p>
 				<div class="project-actions">
 					<button class="ui-btn ui-btn-secondary" type="reset">Clear form</button>
-					<button class="ui-btn ui-btn-primary ui-btn-lg" (click)="onSaveProject()" type="submit"><span aria-hidden="true">✓</span> Create project</button>
+					<button class="ui-btn ui-btn-primary ui-btn-lg" (click)="onSaveProject()" type="submit"><span
+							aria-hidden="true">✓</span> Create project</button>
 				</div>
 			</div>
 		</form>
@@ -91,88 +96,120 @@
 		</div>
 
 		<div class="project-cards">
-            @for(item of projectList(); track $index){
-				<article class="project-card">
-					<div class="project-card-top">
-						<span class="project-id"><span aria-hidden="true">#</span> {{item.projectId}}</span>
-						<span class="project-card-menu" aria-hidden="true">•••</span>
-					</div>
-					<h3>{{item.projectName}}</h3>
-					<p class="client-line"><span aria-hidden="true">◈</span> {{item.clientName}}</p>
+			@for(item of projectList(); track $index){
+			<article class="project-card">
+				<div class="project-card-top">
+					<span class="project-id"><span aria-hidden="true">#</span> {{item.projectId}}</span>
+					<span class="project-card-menu" aria-hidden="true">•••</span>
+				</div>
+				<h3>{{item.projectName}}</h3>
+				<p class="client-line"><span aria-hidden="true">◈</span> {{item.clientName}}</p>
 
-					<div class="project-meta">
-						<span><small>Start date</small><strong>{{item.startDate | date:"dd MMM yyyy"}}</strong></span>
-						<span><small>Lead employee</small><strong>Employee #{{item.leadByEmpId}}</strong></span>
+				<div class="project-meta">
+					<span><small>Start date</small><strong>{{item.startDate | date:"dd MMM yyyy"}}</strong></span>
+					<span><small>Lead employee</small><strong>Employee #{{item.leadByEmpId}}</strong></span>
+				</div>
+
+				<div class="project-contact">
+					<p class="detail-label">Primary contact</p>
+					<strong>{{item.contactPerson}}</strong>
+					<a href="tel:{{item.contactNo}}">{{item.contactNo}}</a>
+					<a href="mailto:{{item.emailId}}">{{item.emailId}}</a>
+				</div>
+
+				<input class="assignment-toggle" id="assignment-{{item.projectId}}" type="checkbox" />
+				<label class="assign-button" for="assignment-{{item.projectId}}"
+					(click)="openEmpModal(item.projectId)"><span aria-hidden="true">♙</span> Assign employee</label>
+				<div class="assignment-popover" #empModal>
+					<label class="assignment-close" for="assignment-{{item.projectId}}"
+						aria-label="Close employee assignment popup" (click)="closeEmpModal()">×</label>
+					<div class="assignment-header">
+						<div>
+							<p class="detail-label">Team assignment</p>
+							<h4>Manage project team</h4>
+							<p>Add people to <strong>{{item.projectName}}</strong></p>
+						</div>
+						<span class="assignment-count">{{currSelectedEmp().length}} assigned</span>
 					</div>
 
-					<div class="project-contact">
-						<p class="detail-label">Primary contact</p>
-						<strong>{{item.contactPerson}}</strong>
-						<a href="tel:{{item.contactNo}}">{{item.contactNo}}</a>
-						<a href="mailto:{{item.emailId}}">{{item.emailId}}</a>
-					</div>
-
-					<input class="assignment-toggle" id="assignment-{{item.projectId}}" type="checkbox" />
-					<label class="assign-button" for="assignment-{{item.projectId}}"><span aria-hidden="true">♙</span> Assign employee</label>
-					<div class="assignment-popover">
-						<label class="assignment-close" for="assignment-{{item.projectId}}" aria-label="Close employee assignment popup">×</label>
-							<div class="assignment-header">
-								<div>
-									<p class="detail-label">Team assignment</p>
-									<h4>Manage project team</h4>
-									<p>Add people to <strong>{{item.projectName}}</strong></p>
-								</div>
-								<span class="assignment-count">2 assigned</span>
+					<form class="assignment-form" action="#" method="post">
+						<input name="empProjectId" type="hidden" value="0" />
+						<input name="projectId" type="hidden" value="{{item.projectId}}" />
+						<div class="assignment-form-grid">
+							<div class="assignment-field assignment-field-wide">
+								<label for="employee-{{item.projectId}}">Employee</label>
+								<select class="ui-control" id="employee-{{item.projectId}}" [(ngModel)]="assignObj.empId" name="empId"
+									 required>
+									<option value="">Select employee</option>
+									@for(item of empList | async; track $index){
+									<option [value]="item.employeeId">{{item.employeeName}}</option>
+									}
+								</select>
 							</div>
-
-							<form class="assignment-form" action="#" method="post">
-								<input name="empProjectId" type="hidden" value="0" />
-								<input name="projectId" type="hidden" value="{{item.projectId}}" />
-								<div class="assignment-form-grid">
-									<div class="assignment-field assignment-field-wide">
-										<label for="employee-{{item.projectId}}">Employee</label>
-										<select class="ui-control" id="employee-{{item.projectId}}" name="empId" required>
-											<option value="" selected disabled>Select employee</option>
-											<option value="1">Alex Morgan</option>
-											<option value="2">Jamie Rivera</option>
-											<option value="3">Sarah Kim</option>
-											<option value="4">David Thomas</option>
-										</select>
-									</div>
-									<div class="assignment-field">
-										<label for="assigned-date-{{item.projectId}}">Assigned date</label>
-										<input class="ui-control" id="assigned-date-{{item.projectId}}" name="assignedDate" type="date" value="2026-09-25" required />
-									</div>
-									<div class="assignment-field">
-										<label for="assignment-role-{{item.projectId}}">Role</label>
-										<select class="ui-control" id="assignment-role-{{item.projectId}}" name="role" required>
-											<option value="" selected disabled>Choose role</option>
-											<option value="project-lead">Project lead</option>
-											<option value="contributor">Contributor</option>
-											<option value="reviewer">Reviewer</option>
-										</select>
-									</div>
-								</div>
-								<label class="active-toggle" for="active-{{item.projectId}}"><input id="active-{{item.projectId}}" name="isActive" type="checkbox" checked /> Active assignment</label>
-								<button class="ui-btn ui-btn-primary ui-btn-sm assignment-submit" type="submit"><span aria-hidden="true">+</span> Add to project</button>
-							</form>
-
-							<div class="assigned-list">
-								<div class="assigned-list-heading"><span>Assigned employees</span><span>Role</span></div>
-								<div class="assigned-person"><span class="assigned-avatar">AM</span><span class="assigned-person-name"><strong>Alex Morgan</strong><small>Added Sep 25, 2026</small></span><span class="assigned-role">Lead</span><button type="button" class="assigned-action" title="Edit Alex Morgan">✎</button><button type="button" class="assigned-action remove-action" title="Remove Alex Morgan">×</button></div>
-								<div class="assigned-person"><span class="assigned-avatar peach-avatar">JR</span><span class="assigned-person-name"><strong>Jamie Rivera</strong><small>Added Sep 25, 2026</small></span><span class="assigned-role">Contributor</span><button type="button" class="assigned-action" title="Edit Jamie Rivera">✎</button><button type="button" class="assigned-action remove-action" title="Remove Jamie Rivera">×</button></div>
+							<div class="assignment-field">
+								<label for="assigned-date-{{item.projectId}}">Assigned date</label>
+								<input class="ui-control" id="assigned-date-{{item.projectId}}" [(ngModel)]="assignObj.assignedDate"
+									name="assignedDate" type="date" value="2026-09-25" required />
+							</div>
+							<div class="assignment-field">
+								<label for="assignment-role-{{item.projectId}}">Role</label>
+								<input class="ui-control" id="assignment-role-{{item.projectId}}"
+									[(ngModel)]="assignObj.role" name="role" type="text" required />
 							</div>
 						</div>
+						<label class="active-toggle" for="active-{{item.projectId}}"><input
+								id="active-{{item.projectId}}" name="isActive" type="checkbox" [(ngModel)]="assignObj.isActive" /> Active
+							assignment</label>
+						<button class="ui-btn ui-btn-primary ui-btn-sm assignment-submit" type="button" (click)="assignEmp()" ><span
+								aria-hidden="true">+</span> Add to project</button>
+					</form>
 
-					<div class="project-card-footer">
-						<span class="project-field-count"><span aria-hidden="true">✓</span> Project details</span>
-						<div class="card-actions">
-							<button class="ui-icon-btn" type="button" title="Edit {{item.projectName}}" aria-label="Edit {{item.projectName}}">✎</button>
-							<button class="ui-icon-btn ui-icon-btn-danger" type="button" title="Delete {{item.projectName}}" aria-label="Delete {{item.projectName}}">⌫</button>
+					<div class="assigned-list">
+						<div class="assigned-list-heading">
+							<div><span>Project team</span><small>{{currSelectedEmp().length}} assigned</small></div>
+							<span>Assignment details</span>
 						</div>
+						@for (employee of currSelectedEmp(); track employee.empProjectId) {
+						<div class="assigned-person">
+							<span class="assigned-avatar">{{employee.employeeName.substring(0, 2).toUpperCase()}}</span>
+							<div class="assigned-person-name">
+								<strong>{{employee.employeeName}}</strong>
+								<span class="assigned-employee-id">Employee ID <b>#{{employee.empId}}</b></span>
+								<small>Assigned {{employee.assignedDate | date:"dd MMM yyyy"}}</small>
+							</div>
+							<div class="assigned-person-details">
+								<span class="assigned-role">{{employee.role}}</span>
+								<span class="assignment-status" [class.assignment-status-active]="employee.isActive"
+									[class.assignment-status-inactive]="!employee.isActive">
+									<span aria-hidden="true"></span>{{employee.isActive ? 'Active' : 'Inactive'}}
+								</span>
+							</div>
+							<div class="assigned-actions">
+								<button type="button" class="assigned-action"
+									[attr.title]="'Edit ' + employee.employeeName"
+									[attr.aria-label]="'Edit ' + employee.employeeName">✎</button>
+								<button type="button" class="assigned-action remove-action"
+									[attr.title]="'Remove ' + employee.employeeName"
+									[attr.aria-label]="'Remove ' + employee.employeeName">×</button>
+							</div>
+						</div>
+						} @empty {
+						<p class="assigned-empty">No employees assigned to this project yet.</p>
+						}
 					</div>
-                </article>
-            }
+				</div>
+
+				<div class="project-card-footer">
+					<span class="project-field-count"><span aria-hidden="true">✓</span> Project details</span>
+					<div class="card-actions">
+						<button class="ui-icon-btn" type="button" title="Edit {{item.projectName}}"
+							aria-label="Edit {{item.projectName}}">✎</button>
+						<button class="ui-icon-btn ui-icon-btn-danger" type="button" title="Delete {{item.projectName}}"
+							aria-label="Delete {{item.projectName}}">⌫</button>
+					</div>
+				</div>
+			</article>
+			}
 		</div>
 	</section>
 </main>

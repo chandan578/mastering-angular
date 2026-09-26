@@ -57,7 +57,6 @@
 .project-card:hover { border-color: var(--accent); box-shadow: 0 12px 25px rgba(4, 52, 44, 0.08); }
 .project-card-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
 .project-id { display: inline-flex; align-items: center; gap: 0.2rem; min-height: 1.45rem; padding: 0.2rem 0.55rem; border-radius: 99rem; background: var(--bg-tint); color: var(--accent-dark); font-size: 0.62rem; font-weight: 700; }
-.project-card-menu { color: #9aa8a2; font-size: 0.75rem; letter-spacing: 0.12em; }
 .project-card h3 { margin: 1.2rem 0 0.45rem; color: var(--ink); font-family: Georgia, 'Times New Roman', serif; font-size: 1.4rem; font-weight: 400; }
 .client-line { margin: 0; color: var(--accent-dark); font-size: 0.74rem; font-weight: 700; }
 .client-line span { color: var(--accent); }
@@ -94,18 +93,30 @@
 .active-toggle { display: inline-flex; align-items: center; gap: 0.4rem; margin: 0.7rem 0; color: var(--muted); cursor: pointer; font-size: 0.65rem; }
 .active-toggle input { accent-color: var(--accent); }
 .assignment-submit { width: 100%; }
-.assigned-list { padding-top: 0.8rem; }
-.assigned-list-heading { display: grid; grid-template-columns: 1fr auto; padding: 0 0.2rem 0.4rem; color: #9aa8a2; font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
-.assigned-person { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto auto; align-items: center; gap: 0.45rem; padding: 0.55rem 0.2rem; border-top: 1px solid #edf1ee; }
-.assigned-avatar { display: grid; width: 1.7rem; height: 1.7rem; place-items: center; border-radius: 50%; background: var(--bg-tint); color: var(--accent-dark); font-size: 0.52rem; font-weight: 700; }
-.assigned-person-name { display: grid; min-width: 0; gap: 0.15rem; }
-.assigned-person-name strong { overflow: hidden; color: var(--ink); font-size: 0.67rem; text-overflow: ellipsis; white-space: nowrap; }
-.assigned-person-name small { color: #9aa8a2; font-size: 0.57rem; }
-.assigned-role { color: var(--muted); font-size: 0.58rem; white-space: nowrap; }
-.assigned-action { width: 1.5rem; height: 1.5rem; padding: 0; border: 0; border-radius: 0.3rem; background: transparent; color: var(--accent-dark); cursor: pointer; font-size: 0.75rem; }
-.assigned-action:hover { background: var(--bg-tint); }
-.assigned-action.remove-action { color: var(--danger); font-size: 1rem; }
-.assigned-action.remove-action:hover { background: #fceaea; }
+.assigned-list { padding-top: 1rem; }
+.assigned-list-heading { display: flex; align-items: center; justify-content: space-between; padding: 0 0.25rem 0.65rem; color: var(--muted); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; }
+.assigned-list-heading div { display: flex; align-items: center; gap: 0.55rem; }
+.assigned-list-heading small { padding: 0.2rem 0.45rem; border-radius: 99rem; background: var(--bg-tint); color: var(--accent-dark); font-size: 0.57rem; letter-spacing: 0; text-transform: none; }
+.assigned-person { display: grid; grid-template-columns: auto minmax(10rem, 1fr) minmax(8rem, auto) auto; align-items: center; gap: 0.85rem; padding: 0.8rem; border: 1px solid #e8eeea; border-radius: 0.55rem; background: #fbfcfa; }
+.assigned-person + .assigned-person { margin-top: 0.5rem; }
+.assigned-avatar { display: grid; width: 2.5rem; height: 2.5rem; place-items: center; border-radius: 50%; background: var(--bg-tint); color: var(--accent-dark); font-size: 0.65rem; font-weight: 700; }
+.assigned-person-name { display: grid; min-width: 0; gap: 0.18rem; }
+.assigned-person-name strong { overflow: hidden; color: var(--ink); font-size: 0.76rem; text-overflow: ellipsis; white-space: nowrap; }
+.assigned-employee-id { color: var(--muted); font-size: 0.6rem; }
+.assigned-employee-id b { color: var(--accent-dark); font-weight: 700; }
+.assigned-person-name small { color: #9aa8a2; font-size: 0.59rem; }
+.assigned-person-details { display: grid; justify-items: start; gap: 0.35rem; }
+.assigned-role { max-width: 10rem; overflow: hidden; color: var(--ink); font-size: 0.64rem; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+.assignment-status { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.22rem 0.45rem; border-radius: 99rem; font-size: 0.57rem; font-weight: 700; }
+.assignment-status > span { width: 0.35rem; height: 0.35rem; border-radius: 50%; background: currentColor; }
+.assignment-status-active { background: var(--bg-tint); color: var(--accent-dark); }
+.assignment-status-inactive { background: #edf1ee; color: var(--muted); }
+.assigned-actions { display: flex; align-items: center; gap: 0.25rem; padding-left: 0.65rem; border-left: 1px solid #e8eeea; }
+.assigned-action { display: grid; width: 2rem; height: 2rem; place-items: center; padding: 0; border: 1px solid transparent; border-radius: 0.4rem; background: transparent; color: var(--accent-dark); cursor: pointer; font-size: 0.85rem; }
+.assigned-action:hover { border-color: var(--line); background: var(--bg-tint); }
+.assigned-action.remove-action { color: var(--danger); font-size: 1.1rem; }
+.assigned-action.remove-action:hover { border-color: #e4b9b9; background: #fceaea; }
+.assigned-empty { margin: 0; padding: 1rem; border: 1px dashed var(--line); border-radius: 0.5rem; color: var(--muted); font-size: 0.72rem; text-align: center; }
 .project-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding-top: 1rem; }
 .project-field-count { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--muted); font-size: 0.68rem; }
 .project-field-count span { color: var(--accent); font-weight: 700; }
@@ -123,4 +134,7 @@
 	.assignment-popover { top: 50%; left: 50%; width: calc(100vw - 2rem); max-height: calc(100vh - 2rem); transform: translate(-50%, -50%); }
 	.assignment-form-grid { grid-template-columns: 1fr; }
 	.assignment-field-wide { grid-column: auto; }
+	.assigned-person { grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.6rem; }
+	.assigned-person-details { grid-column: 2; grid-row: 2; display: flex; align-items: center; flex-wrap: wrap; }
+	.assigned-actions { grid-column: 3; grid-row: 1 / span 2; padding-left: 0; border-left: 0; }
 }

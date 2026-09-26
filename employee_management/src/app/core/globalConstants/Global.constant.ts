@@ -5,7 +5,10 @@ export const GlobalConstant = {
         CREATE_EMPLOYEE: 'CreateEmployee',
         GET_EMPLOYEE: 'GetEmployee',
         GET_ALL_PROJECT: 'GetAllProjects',
-        CREATE_PROJECT: 'CreateProject'
+        CREATE_PROJECT: 'CreateProject',
+        GET_ALL_PROJECT_EMPLOYEE: 'GetAllProjectEmployees',
+        ASSIGN_PROJECT_EMP: 'CreateProjectEmployee',
+        GET_DASHBOARD: 'GetDashboard'
     }
 }
 

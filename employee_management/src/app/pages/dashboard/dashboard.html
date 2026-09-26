@@ -1,1 +1,90 @@
-<p>dashboard works!</p>
+<main class="dashboard-page">
+	<header class="dashboard-heading">
+		<div>
+			<p class="dashboard-eyebrow">People operations</p>
+			<h1>Your workspace, at a glance.</h1>
+			<p class="dashboard-subtitle">A live view of your people and the projects moving your business forward.</p>
+		</div>
+		<div class="dashboard-date"><span aria-hidden="true">◷</span> {{ today | date:'EEEE, MMMM d, y' }}</div>
+	</header>
+
+	@if (isLoading()) {
+		<section class="dashboard-loading" aria-live="polite">
+			<span class="loading-mark" aria-hidden="true">em</span>
+			<p>Gathering your workspace overview...</p>
+		</section>
+	} @else if (errorMessage()) {
+		<section class="dashboard-error" role="alert">
+			<span aria-hidden="true">!</span>
+			<p>{{ errorMessage() }}</p>
+		</section>
+	} @else if (dashboardData(); as data) {
+		<section class="dashboard-metrics" aria-label="Workspace totals">
+			<article class="metric-card employee-metric">
+				<div class="metric-topline"><span>Total employees</span><span class="metric-icon">♙</span></div>
+				<strong>{{ data.totalEmployee | number }}</strong>
+				<p>People in your organization</p>
+				<div class="metric-rule"></div>
+			</article>
+			<article class="metric-card project-metric">
+				<div class="metric-topline"><span>Total projects</span><span class="metric-icon">▣</span></div>
+				<strong>{{ data.totalProject | number }}</strong>
+				<p>Projects across all clients</p>
+				<div class="metric-rule"></div>
+			</article>
+			<article class="metric-note">
+				<p class="dashboard-eyebrow">Your team, in motion</p>
+				<strong>Good work happens when people and projects connect.</strong>
+				<span>Use this overview to stay close to both.</span>
+			</article>
+		</section>
+
+		<section class="dashboard-content-grid">
+			<article class="dashboard-panel people-panel">
+				<div class="panel-heading">
+					<div><p class="dashboard-eyebrow">Fresh faces</p><h2>Recently added people</h2></div>
+					<span class="panel-count">{{ data.recentEmployee.length }} recent</span>
+				</div>
+				@if (data.recentEmployee.length) {
+					<div class="people-list">
+						@for (employee of data.recentEmployee; track employee.employeeId) {
+							<div class="person-row">
+								<span class="person-avatar">{{ employee.employeeName.substring(0, 2).trim().toUpperCase() }}</span>
+								<div class="person-main">
+									<strong>{{ employee.employeeName.trim() }}</strong>
+									<a [href]="'mailto:' + employee.emailId">{{ employee.emailId }}</a>
+								</div>
+								<div class="person-meta"><span>Department {{ employee.deptId }}</span><time>{{ employee.createdDate | date:'MMM d' }}</time></div>
+							</div>
+						}
+					</div>
+				} @else {
+					<p class="empty-state">No recently added employees.</p>
+				}
+			</article>
+
+			<article class="dashboard-panel projects-panel">
+				<div class="panel-heading">
+					<div><p class="dashboard-eyebrow">Work in progress</p><h2>Recent projects</h2></div>
+					<span class="panel-count">{{ data.recentProjects.length }} recent</span>
+				</div>
+				@if (data.recentProjects.length) {
+					<div class="project-list">
+						@for (project of data.recentProjects; track project.projectId) {
+							<article class="project-row">
+								<div class="project-row-marker"><span aria-hidden="true">↗</span></div>
+								<div class="project-row-content">
+									<div class="project-row-title"><h3>{{ project.projectName }}</h3><span>#{{ project.projectId }}</span></div>
+									<p>{{ project.clientName }}</p>
+									<div class="project-row-meta"><span>Lead employee <b>#{{ project.leadByEmpId }}</b></span><time>{{ project.startDate | date:'MMM d, y' }}</time></div>
+								</div>
+							</article>
+						}
+					</div>
+				} @else {
+					<p class="empty-state">No recent projects to show.</p>
+				}
+			</article>
+		</section>
+	}
+</main>
